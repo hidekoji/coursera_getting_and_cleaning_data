@@ -6,7 +6,7 @@ download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUC
 ## 0.3 unzip file and read data file.
 unzip(temp)
 ## 0.4 Read activity_labels.txt
-features <- read.table("UCI\ HAR\ Dataset/features.txt")
+features <- read.table("UCI\ HAR\ Dataset/features.txt",stringsAsFactors = FALSE)
 ## 0.5 Read activity_labels.txt
 activity_labels <- read.table("UCI\ HAR\ Dataset/activity_labels.txt")
 ## 0.6 Read X_test.txt
@@ -40,7 +40,7 @@ library(plyr)
 library(dplyr)
 ## 2.1 Get column names indexes that have mean() or std()
 filtered.features <- features %>% filter(grepl("mean()",V2) | grepl("std()",V2))
-## 2.2 From X_merged, only select columns that in filtered_features
+## 2.2 From X_merged, only select columns that in filtered.features
 mean.std.X_merged <- select(X_merged, filtered.features$V1)
 ## 2.3 Add back y_merged and subject_merged which are omitted by step 2.2
 mreged.dataframe2 <- cbind(mean.std.X_merged, y_merged, subject_merged)
@@ -48,23 +48,96 @@ mreged.dataframe2 <- cbind(mean.std.X_merged, y_merged, subject_merged)
 #3.Uses descriptive activity names to name the activities in the data set
 ## 3.1 Create lookup data set by merging y_merged (activitly records) with label (activitly_labels)
 activities.lookup <- left_join(y_merged, activity_labels)
-## 3.2 Exclude activity Id column (col index is 80) from mean.std.X_merged
+## 3.2 Create a merged data frame with mean.std.X_merged, descriptive activity name, and
+## subject data frame 
+## 
 merged.dataframe3 <- cbind(mean.std.X_merged, select(activities.lookup, V2), subject_merged)
 
 #4.Appropriately labels the data set with descriptive variable names. 
-## 4.1 Set column names to X_merged with label in features
-colnames(X_merged) <- features$V2
-mean.std.X_merged.labeled <- select(X_merged, filtered.features$V1)
-## Select activity lookup code
+## 4.1 Define function to get nice descriptive variable names for features
+getNiceDescription <- function(colname){
+  
+  col = as.character(colname)
+  list <- strsplit(x = col, split = "-")
+  column<- list[[1]][1]
+  col.type <- substr(column,1,1)
+  col.name <- substr(column,2,nchar(column))
+  col.aggfunc <- list[[1]][2]
+  if (length(list[[1]]) == 3){
+    col.direction <- list[[1]][3]
+  } else {
+    col.direction <- ""
+  }
+  
+  #get nice name for function
+  if(col.aggfunc == "mean()"){
+    nice.aggname <- "MEAN"
+  } else if (col.aggfunc == "std()") {
+    nice.aggname <- "STANDARD_DIVIATION"
+  } else if (col.aggfunc == "meanFreq()") {
+    nice.aggname <- "MEAN_FREQUENCY"
+  }
+  
+  #get nice name for type
+  if(col.type == "t"){
+    nice.type = "TIME"
+  } else if (col.type == "f"){
+    nice.type = "FREQUENCY_DOMAIN_SIGNALS"
+  }
+  nice.colname <- ''
+  # get nice name for rest
+  if(col.name == "BodyAcc"){
+    nice.colname <- "BODY_ACCELEROMETER"
+  } else if(col.name == "GravityAcc") {
+    nice.colname <- "GRAVITY_ACCELEROMETER"
+  } else if(col.name == "BodyAccJerk") {
+    nice.colname <- "BODY_ACCELEROMETER_JERK"
+  } else if (col.name == "BodyGyro"){
+    nice.colname <- "BODY_GYROSCOPE"
+  } else if (col.name == "BodyGyroJerk"){
+    nice.colname <- "BODY_GYROSCOPE_JERK"
+  } else if (col.name == "BodyAccMag"){
+    nice.colname <- "BODY_ACCELEROMETER_MAGNITUDE"
+  } else if (col.name == "GravityAccMag"){
+    nice.colname <- "GRAVITY_ACCELEROMETER_MAGNITUDE"
+  } else if (col.name == "BodyAccJerkMag") {
+    nice.colname <- "BODY_ACCELEROMETER_JERK_MAGINITUDE"
+  } else if (col.name == "BodyGyroMag"){
+    nice.colname <- "BODY_GYROSCOPE_MAGNITUDE"
+  } else if (col.name == "BodyGyroJerkMag") {
+    nice.colname <- "BODY_GYROSCOPE_JERK_MAGNITUDE"
+  } else if (col.name == "BodyBodyAccJerkMag") {
+    nice.colname <- "BODY_BODY_ACCELEROMETER_JERK_MAGNITUDE"
+  } else if (col.name == "BodyBodyGyroMag"){
+    nice.colname <- "BODY_BODY_GYROSCOPE_MAGNITUDE"
+  } else if (col.name == "BodyBodyGyroJerkMag"){
+    nice.colname <- "BODY_BODY_GYROSCOPE_JERK_MAGNITUDE"
+  }
+  if(nchar(col.direction)>0){
+   return (paste(nice.aggname, nice.type, nice.colname, col.direction, sep = "_"))
+  }  else {
+   return (paste(nice.aggname, nice.type, nice.colname, sep = "_"))
+  }
+}
+## 4.2 Add nice name descfription to features
+rowcols <- filtered.features$V2
+### 4.2.1 Call custom function to get a nice description
+nicecols <- lapply(rowcols, function(x){getNiceDescription(x)})
+### 4.2.2 Add calculated nice name to filtered.features data frame as desc column
+filtered.features$desc <- unlist(nicecols)
+mean.std.X_merged.labeled <- mean.std.X_merged
+## 4.3 Set column names to mean.std.X_merged with nice label (aka desc column) in filtered.features
+colnames(mean.std.X_merged.labeled) <- filtered.features$desc
+## 4.4 Select activity lookup code
 activities = select(activities.lookup, V2)
-## Set descriptive variable names to activities and subjects
-colnames(activities) <- 'Activity'
-colnames(subject_merged) <- 'Subject'
-## Merge activities, subject_merged, and mean.std.X_merged.labeled
+## 4.5 Set descriptive variable names to activities and subjects
+colnames(activities) <- 'ACTIVITY'
+colnames(subject_merged) <- 'SUBJECT'
+## 4.6 Merge activities, subject_merged, and mean.std.X_merged.labeled
 merged.dataframe4 <- cbind(activities, subject_merged, mean.std.X_merged.labeled)
 
 #5.Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
-groupColumns <- c("Activity","Subject")
+groupColumns <- c("ACTIVITY","SUBJECT")
 dataColumns <- colnames(mean.std.X_merged.labeled)
 ## 5.1 calculate average for each variable
 merged.dataframe5 = ddply(merged.dataframe4, groupColumns, 
