@@ -270,7 +270,7 @@ getNiceDescription <- function(colname){
 }
 ````
 
-So once you created the function, then you can use `lapply` function to do the name converson for all the variable names.
+After you created the function, then you can use `lapply` function to do the name converson for all the variable names.
 With this new descriptive variable names, call `colnames` function and set as column names (aka variable names) for the mean.std.X_merged.labeled data frame. also, set 'ACTIVITY' as descriptive variable name for activitites data frame and 'SUBJECT' for subject_merged data frame. Lastly, with `cbind` function, merge these three data frames by columns
 
 And the R function that takes care of this part goes like this:
