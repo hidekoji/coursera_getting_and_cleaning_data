@@ -5,7 +5,7 @@ temp <- tempfile()
 download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip",temp, method="curl", mode="wb")
 ## 0.3 unzip file and read data file.
 unzip(temp)
-## 0.4 Read activity_labels.txt
+## 0.4 Read features.txt
 features <- read.table("UCI\ HAR\ Dataset/features.txt",stringsAsFactors = FALSE)
 ## 0.5 Read activity_labels.txt
 activity_labels <- read.table("UCI\ HAR\ Dataset/activity_labels.txt")
@@ -35,7 +35,7 @@ subject_merged <- rbind(subject_test, subject_train)
 ## 1.5 merge X_merged, y_merged, and subject_,erged
 merged.dataframe <- cbind(X_merged, y_merged,subject_merged)
 
-#2.Extracts only the measurements on the mean and standard deviation for each measurement. 
+#2.Extracts only the measurements on the mean and standard deviation for each measurement.
 library(plyr)
 library(dplyr)
 ## 2.1 Get column names indexes that have mean() or std()
@@ -49,14 +49,14 @@ mreged.dataframe2 <- cbind(mean.std.X_merged, y_merged, subject_merged)
 ## 3.1 Create lookup data set by merging y_merged (activitly records) with label (activitly_labels)
 activities.lookup <- left_join(y_merged, activity_labels)
 ## 3.2 Create a merged data frame with mean.std.X_merged, descriptive activity name, and
-## subject data frame 
-## 
+## subject data frame
+##
 merged.dataframe3 <- cbind(mean.std.X_merged, select(activities.lookup, V2), subject_merged)
 
-#4.Appropriately labels the data set with descriptive variable names. 
+#4.Appropriately labels the data set with descriptive variable names.
 ## 4.1 Define function to get nice descriptive variable names for features
 getNiceDescription <- function(colname){
-  
+
   col = as.character(colname)
   list <- strsplit(x = col, split = "-")
   column<- list[[1]][1]
@@ -68,7 +68,7 @@ getNiceDescription <- function(colname){
   } else {
     col.direction <- ""
   }
-  
+
   #get nice name for function
   if(col.aggfunc == "mean()"){
     nice.aggname <- "MEAN"
@@ -77,7 +77,7 @@ getNiceDescription <- function(colname){
   } else if (col.aggfunc == "meanFreq()") {
     nice.aggname <- "MEAN_FREQUENCY"
   }
-  
+
   #get nice name for type
   if(col.type == "t"){
     nice.type = "TIME"
@@ -136,11 +136,11 @@ colnames(subject_merged) <- 'SUBJECT'
 ## 4.6 Merge activities, subject_merged, and mean.std.X_merged.labeled
 merged.dataframe4 <- cbind(activities, subject_merged, mean.std.X_merged.labeled)
 
-#5.Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
+#5.Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 groupColumns <- c("ACTIVITY","SUBJECT")
 dataColumns <- colnames(mean.std.X_merged.labeled)
 ## 5.1 calculate average for each variable
-merged.dataframe5 = ddply(merged.dataframe4, groupColumns, 
+merged.dataframe5 = ddply(merged.dataframe4, groupColumns,
                           function(x) colMeans(x[dataColumns]))
 ## 5.2 write the data frame to text file
 write.table(merged.dataframe5, file = '/tmp/dataframe5.txt', row.names = FALSE)
