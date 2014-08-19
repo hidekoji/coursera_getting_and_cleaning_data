@@ -172,3 +172,125 @@ activities.lookup <- left_join(y_merged, activity_labels)
 ## 
 merged.dataframe3 <- cbind(mean.std.X_merged, select(activities.lookup, V2), subject_merged)
 ````
+
+### Appropriately labels the data set with descriptive variable names
+So how we can get a descriptive variable names. As a starter, let's take a look at the filtered.features data frame. So you can see V2 columns contains some sort of variable names. But it uses too much abbreviation and difficult to understand.
+
+````R
+> head(filtered.features)
+  V1                V2  
+1  1 tBodyAcc-mean()-X 
+2  2 tBodyAcc-mean()-Y 
+3  3 tBodyAcc-mean()-Z 
+4  4  tBodyAcc-std()-X 
+5  5  tBodyAcc-std()-Y 
+6  6  tBodyAcc-std()-Z 
+````
+
+If you look into the features_info.txt, you can see first small "t" stands for time and "f" for frequency domain signals.
+Then it also says "Acc" stands for accelerometer and "Gyro" for gyroscope. Same apply to aggregate function name and "std" stands for standard deviation. Given these, let create a function that accpets original variable name and returns descriptive variable name. So the naming convention looks like
+
+````
+<AGGREGATION_FUNCTION>_<DATA_TYPE>_<SINGAL_FROM>_<SENSOR>_<AXIS>
+
+DATA_TYPE: either TIME or FREQUENCY_DOMAIN_SIGNAL
+SIGNAL_FROM :either BODY or GRAVITY
+SENSOR: either ACCELEROMETER or GYROSCOPE
+AXIS: X or Y or Z
+````
+
+So this converts `tBodyAcc-mean()-X` variable name to `MEAN_TIME_BODY_ACCELEROMETER_X` which I believe more descriptive
+
+And the R function that takes care of conversion goes like this:
+
+````R
+getNiceDescription <- function(colname){
+  
+  col = as.character(colname)
+  list <- strsplit(x = col, split = "-")
+  column<- list[[1]][1]
+  col.type <- substr(column,1,1)
+  col.name <- substr(column,2,nchar(column))
+  col.aggfunc <- list[[1]][2]
+  if (length(list[[1]]) == 3){
+    col.direction <- list[[1]][3]
+  } else {
+    col.direction <- ""
+  }
+  
+  #get nice name for function
+  if(col.aggfunc == "mean()"){
+    nice.aggname <- "MEAN"
+  } else if (col.aggfunc == "std()") {
+    nice.aggname <- "STANDARD_DIVIATION"
+  } else if (col.aggfunc == "meanFreq()") {
+    nice.aggname <- "MEAN_FREQUENCY"
+  }
+  
+  #get nice name for type
+  if(col.type == "t"){
+    nice.type = "TIME"
+  } else if (col.type == "f"){
+    nice.type = "FREQUENCY_DOMAIN_SIGNALS"
+  }
+  nice.colname <- ''
+  # get nice name for rest
+  if(col.name == "BodyAcc"){
+    nice.colname <- "BODY_ACCELEROMETER"
+  } else if(col.name == "GravityAcc") {
+    nice.colname <- "GRAVITY_ACCELEROMETER"
+  } else if(col.name == "BodyAccJerk") {
+    nice.colname <- "BODY_ACCELEROMETER_JERK"
+  } else if (col.name == "BodyGyro"){
+    nice.colname <- "BODY_GYROSCOPE"
+  } else if (col.name == "BodyGyroJerk"){
+    nice.colname <- "BODY_GYROSCOPE_JERK"
+  } else if (col.name == "BodyAccMag"){
+    nice.colname <- "BODY_ACCELEROMETER_MAGNITUDE"
+  } else if (col.name == "GravityAccMag"){
+    nice.colname <- "GRAVITY_ACCELEROMETER_MAGNITUDE"
+  } else if (col.name == "BodyAccJerkMag") {
+    nice.colname <- "BODY_ACCELEROMETER_JERK_MAGINITUDE"
+  } else if (col.name == "BodyGyroMag"){
+    nice.colname <- "BODY_GYROSCOPE_MAGNITUDE"
+  } else if (col.name == "BodyGyroJerkMag") {
+    nice.colname <- "BODY_GYROSCOPE_JERK_MAGNITUDE"
+  } else if (col.name == "BodyBodyAccJerkMag") {
+    nice.colname <- "BODY_BODY_ACCELEROMETER_JERK_MAGNITUDE"
+  } else if (col.name == "BodyBodyGyroMag"){
+    nice.colname <- "BODY_BODY_GYROSCOPE_MAGNITUDE"
+  } else if (col.name == "BodyBodyGyroJerkMag"){
+    nice.colname <- "BODY_BODY_GYROSCOPE_JERK_MAGNITUDE"
+  }
+  if(nchar(col.direction)>0){
+   return (paste(nice.aggname, nice.type, nice.colname, col.direction, sep = "_"))
+  }  else {
+   return (paste(nice.aggname, nice.type, nice.colname, sep = "_"))
+  }
+}
+````
+
+So once you created the function, then you can use `lapply` function to do the name converson for all the variable names.
+With this new descriptive variable names, call `colnames` function and set as column names (aka variable names) for the mean.std.X_merged.labeled data frame. also, set 'ACTIVITY' as descriptive variable name for activitites data frame and 'SUBJECT' for subject_merged data frame. Lastly, with `cbind` function, merge these three data frames by columns
+
+And the R function that takes care of this part goes like this:
+
+
+````R
+## 4.2 Add nice name descfription to features
+rowcols <- filtered.features$V2
+### 4.2.1 Call custom function to get a nice description
+nicecols <- lapply(rowcols, function(x){getNiceDescription(x)})
+### 4.2.2 Add calculated nice name to filtered.features data frame as desc column
+filtered.features$desc <- unlist(nicecols)
+mean.std.X_merged.labeled <- mean.std.X_merged
+## 4.3 Set column names to mean.std.X_merged with nice label (aka desc column) in filtered.features
+colnames(mean.std.X_merged.labeled) <- filtered.features$desc
+## 4.4 Select activity lookup code
+activities = select(activities.lookup, V2)
+## 4.5 Set descriptive variable names to activities and subjects
+colnames(activities) <- 'ACTIVITY'
+colnames(subject_merged) <- 'SUBJECT'
+## 4.6 Merge activities, subject_merged, and mean.std.X_merged.labeled
+merged.dataframe4 <- cbind(activities, subject_merged, mean.std.X_merged.labeled)
+````
