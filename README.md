@@ -115,3 +115,32 @@ subject_merged <- rbind(subject_test, subject_train)
 merged.dataframe <- cbind(X_merged, y_merged,subject_merged)
 ````
 
+### Extracts only the measurements on the mean and standard deviation for each measurement
+The next step is data transformation and you need to filter data by only selecting mean or deviation columns for each measurement. If look into the features data frame's V2 column, you can see what aggregation function is used for each measurement like this.
+
+````R
+> head(features)
+  V1                V2
+1  1 tBodyAcc-mean()-X
+2  2 tBodyAcc-mean()-Y
+3  3 tBodyAcc-mean()-Z
+4  4  tBodyAcc-std()-X
+5  5  tBodyAcc-std()-Y
+6  6  tBodyAcc-std()-Z
+````
+
+As a first step, you can filter this features data frame by using `grelpl` function and `filter` function. As for `filter`, let's use [Hadley Wickham's dplyr](https://github.com/hadley/dplyr)  for the project. Once you get a filterd features data frame that only contains mean and stadard deviation data (i.e. column indexs), you can use dplyr's `select` function and select columns from X_merge data frame by passing column indexes obtained from filtered.features data frame's V1 column. Now you get a  filtered X data (mean.std.X_merged in my R code) as requested. So with `cbind` function let's create a merged data frame by combining mean.std.X_merged, y_merged, and subject_merged horizontally (i.e. by columns)
+
+So the R code that Extracts only the measurements on the mean and standard deviation for each measurement looks like this:
+
+````R
+#2.Extracts only the measurements on the mean and standard deviation for each measurement. 
+library(plyr)
+library(dplyr)
+## 2.1 Get column names indexes that have mean() or std()
+filtered.features <- features %>% filter(grepl("mean()",V2) | grepl("std()",V2))
+## 2.2 From X_merged, only select columns that in filtered.features
+mean.std.X_merged <- select(X_merged, filtered.features$V1)
+## 2.3 Add back y_merged and subject_merged which are omitted by step 2.2
+mreged.dataframe2 <- cbind(mean.std.X_merged, y_merged, subject_merged)
+````
