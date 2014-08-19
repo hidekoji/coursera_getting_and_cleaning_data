@@ -296,7 +296,7 @@ merged.dataframe4 <- cbind(activities, subject_merged, mean.std.X_merged.labeled
 ````
 
 ### Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
-The final step is another data transformation. This time you need to group merged data frame by activity and subject then aggregate data by calculating average for each data column. To do this, let's use `ddply` function. This function accepts group by columns and function that aggregate data. since you need to group by activity and subject, let's pass 'ACTIVITY' and 'SUBJECT' as group by columns. As for data column, with `colnames` function, you need to select whole columns available in mean.std.X_merged data frame.  Once you get the aggregated data frame, write the data frame to file system with `write.table` function.
+The final step is another data transformation. This time you need to group merged data frame by activity and subject then aggregate data by calculating average for each data column. To do this, let's use `ddply` function. This function accepts group by columns and function that aggregate data. since you need to group by activity and subject, let's pass 'ACTIVITY' and 'SUBJECT' as group by columns. As for data column, with `colnames` function, you need to select whole columns available in mean.std.X_merged data frame. To calculate average of data column, you can use `colMeans()` function. Once you get the aggregated data frame, write the data frame to file system with `write.table` function.
 
 ```R
 groupColumns <- c("ACTIVITY","SUBJECT")
