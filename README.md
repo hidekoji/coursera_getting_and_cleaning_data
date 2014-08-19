@@ -38,7 +38,7 @@ unzip(temp)
 ````
 
 ### Read data as R data frames
-So the next step is read the exploede data files which are placed under UCI HAR Dataset folder.In this zip file there are following data sets:
+The next step is read the exploeded data files which are placed under UCI HAR Dataset folder. In the zip file, there are following data sets:
 
 * UCI HAR Dataset/features.txt
 * UCI HAR Dataset/activity_labels.txt
@@ -55,7 +55,6 @@ Once you finished reading these files, you can unlink temp file with `unlink` fu
 So the R code for reading data files looks like this. 
 
 ````R
-
 ## 0.4 Read features.txt
 features <- read.table("UCI\ HAR\ Dataset/features.txt",stringsAsFactors = FALSE)
 ## 0.5 Read activity_labels.txt
@@ -73,7 +72,46 @@ subject_train <- read.table("UCI\ HAR\ Dataset/train/subject_train.txt")
 ## 0.11 Read y_train.txt
 y_train <- read.table("UCI\ HAR\ Dataset/train/y_train.txt")
 unlink(temp)
+````
+
+### Merge the training and the test sets to create one data set
+The next step is merging the trainig and the test sets and to do this task, you need to consider following three components.
+
+* X data 
+* y data
+* Subject data
+
+As you can see below, since both test and train data has same number of columns for X, y and Subject data. You can use `rbind` function to join two data frames (datasets) vertically.
 
 
+````R
+> dim(X_test)
+[1] 2947  561
+> dim(X_train)
+[1] 7352  561
+> dim(y_test)
+[1] 2947    1
+> dim(y_train)
+[1] 7352    1
+> dim(subject_test)
+[1] 2947    1
+> dim(subject_train)
+[1] 7352    1
+````
+
+So the R code for merging training and the test sets to create one data set looks like this:
+
+````R
+# 1. Merge the training and the test sets to create one data set.
+## 1.1 merge X_test and X_train (keep all the records from both X_test and X_train)
+X_merged <- rbind(X_test, X_train)
+## 1.2 merge y_test and y_train (keep all the records from both y_test and y_train)
+y_merged <- rbind(y_test, y_train)
+## 1.3 Set column names to y_merged
+#colnames(y_merged) <- 'AcitivityType'
+## 1.4 merge subject_test and subject_train (keep all the records from both subject_test and subject_train)
+subject_merged <- rbind(subject_test, subject_train)
+## 1.5 merge X_merged, y_merged, and subject_,erged
+merged.dataframe <- cbind(X_merged, y_merged,subject_merged)
 ````
 
