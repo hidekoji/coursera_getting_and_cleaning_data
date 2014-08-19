@@ -146,7 +146,20 @@ mreged.dataframe2 <- cbind(mean.std.X_merged, y_merged, subject_merged)
 ````
 
 ### Uses descriptive activity names to name the activities in the data set
-You can grab descriptive activity names from activity labels. Since activities data frame only contains the look up code, you need to join the y_merged data frame with activity_labels data frame with `left_join` function. Now you have activity.lookup data frame. To get a merged data farme, use `cbind` like previous step and merge mean.std.X_merged, activities.lookup (only V2 column so need to do `select`), and subject_merged data frame.
+You can grab descriptive activity names from activity labels. Here is the labels in the activity_labels.
+
+````R
+> head(activity_labels)
+  V1                 V2
+1  1            WALKING
+2  2   WALKING_UPSTAIRS
+3  3 WALKING_DOWNSTAIRS
+4  4            SITTING
+5  5           STANDING
+6  6             LAYING
+````
+
+Since activities data frame only contains the look up code, you need to join the y_merged data frame with activity_labels data frame with `left_join` function. Now you have activity.lookup data frame. To get a merged data farme, use `cbind` like previous step and merge mean.std.X_merged, activities.lookup (only V2 column so need to do `select`), and subject_merged data frame.
 
 So the R code that Extracts only the measurements on the mean and standard deviation for each measurement looks like this:
 
