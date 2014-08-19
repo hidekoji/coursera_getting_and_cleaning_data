@@ -129,7 +129,7 @@ The next step is data transformation and you need to filter data by only selecti
 6  6  tBodyAcc-std()-Z
 ````
 
-As a first step, you can filter this features data frame by using `grelpl` function and `filter` function. As for `filter`, let's use [Hadley Wickham's dplyr](https://github.com/hadley/dplyr)  for the project. Once you get a filterd features data frame that only contains mean and stadard deviation data (i.e. column indexs), you can use dplyr's `select` function and select columns from X_merge data frame by passing column indexes obtained from filtered.features data frame's V1 column. Now you get a  filtered X data (mean.std.X_merged in my R code) as requested. So with `cbind` function let's create a merged data frame by combining mean.std.X_merged, y_merged, and subject_merged horizontally (i.e. by columns)
+As a first step, you can filter this features data frame by using `grelpl` and `filter` function. As for `filter`, let's use [Hadley Wickham's dplyr](https://github.com/hadley/dplyr)  for the project. Once you get a filterd features data frame that only contains mean and stadard deviation data (i.e. column indexs), you can use dplyr's `select` function and select columns from X_merge data frame by passing column indexes obtained from filtered.features data frame's V1 column. Now you get a  filtered X data (mean.std.X_merged in my R code) as requested. So with `cbind` function let's create a merged data frame by combining mean.std.X_merged, y_merged, and subject_merged horizontally (i.e. by columns)
 
 So the R code that Extracts only the measurements on the mean and standard deviation for each measurement looks like this:
 
@@ -143,4 +143,19 @@ filtered.features <- features %>% filter(grepl("mean()",V2) | grepl("std()",V2))
 mean.std.X_merged <- select(X_merged, filtered.features$V1)
 ## 2.3 Add back y_merged and subject_merged which are omitted by step 2.2
 mreged.dataframe2 <- cbind(mean.std.X_merged, y_merged, subject_merged)
+````
+
+### Uses descriptive activity names to name the activities in the data set
+You can grab descriptive activity names from activity labels. Since activities data frame only contains the look up code, you need to join the y_merged data frame with activity_labels data frame with `left_join` function. Now you have activity.lookup data frame. To get a merged data farme, use `cbind` like previous step and merge mean.std.X_merged, activities.lookup (only V2 column so need to do `select`), and subject_merged data frame.
+
+So the R code that Extracts only the measurements on the mean and standard deviation for each measurement looks like this:
+
+````R
+#3.Uses descriptive activity names to name the activities in the data set
+## 3.1 Create lookup data set by merging y_merged (activitly records) with label (activitly_labels)
+activities.lookup <- left_join(y_merged, activity_labels)
+## 3.2 Create a merged data frame with mean.std.X_merged, descriptive activity name, and
+## subject data frame 
+## 
+merged.dataframe3 <- cbind(mean.std.X_merged, select(activities.lookup, V2), subject_merged)
 ````
