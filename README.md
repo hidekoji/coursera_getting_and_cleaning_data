@@ -81,7 +81,7 @@ The next step is merging the trainig and the test sets and to do this task, you 
 * y data
 * Subject data
 
-As you can see below, since both test and train data has same number of columns for X, y and Subject data. You can use `rbind` function to join two data frames (datasets) vertically.
+As you can see below, since both test and train data has same number of columns for X, y and Subject data. You can use `rbind` function to join two data frames (datasets) vertically(i.e. by rows). Once you finished merging X, y and subject data, then as a last step, you can merge X, y, and Subject data horizontally(by columns) with `cbind`
 
 
 ````R
