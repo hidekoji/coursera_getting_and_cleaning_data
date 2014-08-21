@@ -1,4 +1,4 @@
-## DATA DICTIONARY (Code Book)
+## Data Dictoinary (Code Book)
 
 This Data Dictionary describes data set for the Getting and Cleaning Data Course Project.
 
@@ -433,21 +433,93 @@ Standard deviation of magnitude of these three-dimensional time domain body gyro
 
 ### MEAN_FREQUENCY_BODY_ACCELEROMETER_X
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of frequency domain body acceleration signals in X direction.
+
 ### MEAN_FREQUENCY_BODY_ACCELEROMETER_Y
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of frequency domain body acceleration signals in Y direction.
 
 ### MEAN_FREQUENCY_BODY_ACCELEROMETER_Z
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of frequency domain body acceleration signals in Z direction.
+
 ### STANDARD_DEVIATION_FREQUENCY_BODY_ACCELEROMETER_X
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of frequency domain body acceleration signals in X direction.
 
 ### STANDARD_DEVIATION_FREQUENCY_BODY_ACCELEROMETER_Y
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation frequency domain body acceleration signals in Y direction.
+
 ### STANDARD_DEVIATION_FREQUENCY_BODY_ACCELEROMETER_Z
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of frequency domain body acceleration signals in Z direction.
 
 ### MEAN_FREQUENCY_FREQUENCY_BODY_ACCELEROMETER_X
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Weighted average of the frequency domain body acceleration signals in X direction.
+
 ### MEAN_FREQUENCY_FREQUENCY_BODY_ACCELEROMETER_Y
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Weighted average of the frequency domain body acceleration signals in Y direction.
+
 ### MEAN_FREQUENCY_FREQUENCY_BODY_ACCELEROMETER_Z
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Weighted average of the frequency domain body acceleration signals in Z direction.
 
 ### MEAN_FREQUENCY_BODY_ACCELEROMETER_JERK_X
 
