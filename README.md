@@ -222,7 +222,7 @@ getNiceDescription <- function(colname){
   if(col.aggfunc == "mean()"){
     nice.aggname <- "MEAN"
   } else if (col.aggfunc == "std()") {
-    nice.aggname <- "STANDARD_DIVIATION"
+    nice.aggname <- "STANDARD_DEVIATION"
   } else if (col.aggfunc == "meanFreq()") {
     nice.aggname <- "MEAN_FREQUENCY"
   }
