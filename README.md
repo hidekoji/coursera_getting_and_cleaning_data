@@ -107,11 +107,9 @@ So the R code for merging training and the test sets to create one data set look
 X_merged <- rbind(X_test, X_train)
 ## 1.2 merge y_test and y_train (keep all the records from both y_test and y_train)
 y_merged <- rbind(y_test, y_train)
-## 1.3 Set column names to y_merged
-#colnames(y_merged) <- 'AcitivityType'
-## 1.4 merge subject_test and subject_train (keep all the records from both subject_test and subject_train)
+## 1.3 merge subject_test and subject_train (keep all the records from both subject_test and subject_train)
 subject_merged <- rbind(subject_test, subject_train)
-## 1.5 merge X_merged, y_merged, and subject_,erged
+## 1.4 merge X_merged, y_merged, and subject_,erged
 merged.dataframe <- cbind(X_merged, y_merged,subject_merged)
 ````
 
