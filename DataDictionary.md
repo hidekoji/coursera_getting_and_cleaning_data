@@ -13,12 +13,12 @@ Character
 Activity which each person performed with a smartphone (Samsung Galaxy S II) on the waist.
 Activity is either of the followings:
 
-*WALKING
-*WALKING_UPSTAIRS
-*WALKING_DOWNSTAIRS
-*SITTING
-*STANDING
-*LAYING
+* WALKING
+* WALKING_UPSTAIRS
+* WALKING_DOWNSTAIRS
+* SITTING
+* STANDING
+* LAYING
 
 ### SUBJECT
 
@@ -38,7 +38,7 @@ Numeric
 
 #### Description
 
-Mean value of time
+Mean value of time domain body acceleration signals in X direction.
 
 ### MEAN_TIME_BODY_ACCELEROMETER_Y
 
@@ -48,9 +48,10 @@ Numeric
 
 #### Description
 
-Mean value of time
+Mean value of time domain body acceleration signals in Y direction.
 
 ### MEAN_TIME_BODY_ACCELEROMETER_Z
+
 
 #### Data Type
 
@@ -58,7 +59,7 @@ Numeric
 
 #### Description
 
-Mean value of time domain signal
+Mean value of time domain body acceleration signals in Z direction 
 
 ### STANDARD_DEVIATION_TIME_BODY_ACCELEROMETER_X
 
@@ -68,7 +69,7 @@ Numeric
 
 #### Description
 
-Standard deviation of time domain signal
+Standard deviation of time domain body acceleration signals in X direction
 
 ### STANDARD_DEVIATION_TIME_BODY_ACCELEROMETER_Y
 
@@ -78,9 +79,17 @@ Numeric
 
 #### Description
 
-Standard deviation of time domain signal
+Standard deviation of time domain body acceleration signals in Y direction
 
 ### STANDARD_DEVIATION_TIME_BODY_ACCELEROMETER_Z
+
+#### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of time domain body acceleration signals in Z direction
 
 ### MEAN_TIME_GRAVITY_ACCELEROMETER_X
 
@@ -90,7 +99,7 @@ Numeric
 
 #### Description
 
-Mean value of time domain signal
+Mean value of time domain gravity acceleration signals in X direction 
 
 ### MEAN_TIME_GRAVITY_ACCELEROMETER_Y
 
@@ -100,7 +109,7 @@ Numeric
 
 #### Description
 
-Mean value of time domain signal
+Mean value of time domain gravity acceleration signals in Y direction 
 
 ### MEAN_TIME_GRAVITY_ACCELEROMETER_Z
 
@@ -110,7 +119,7 @@ Numeric
 
 #### Description
 
-Mean value of time domain signal
+Mean value of time domain gravity acceleration signals in Z direction 
 
 ### STANDARD_DEVIATION_TIME_GRAVITY_ACCELEROMETER_X
 
@@ -120,7 +129,7 @@ Numeric
 
 #### Description
 
-Standard deviation of time domain signal
+Standard deviation of time domain gravity acceleration signals in X direction 
 
 ### STANDARD_DEVIATION_TIME_GRAVITY_ACCELEROMETER_Y
 
@@ -130,7 +139,7 @@ Numeric
 
 #### Description
 
-Standard deviation of time domain signal
+Standard deviation of time domain gravity acceleration signals in Y direction 
 
 ### STANDARD_DEVIATION_TIME_GRAVITY_ACCELEROMETER_Z
 
@@ -140,43 +149,188 @@ Numeric
 
 #### Description
 
-Standard deviation of time domain signal
+Standard deviation of time domain gravity acceleration signals in Z direction 
 
 ### MEAN_TIME_BODY_ACCELEROMETER_JERK_X
 
+#### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of time domain body acceleration jerk signals in X direction 
+
 ### MEAN_TIME_BODY_ACCELEROMETER_JERK_Y
+
+#### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of time domain body acceleration jerk signals in Y direction 
 
 ### MEAN_TIME_BODY_ACCELEROMETER_JERK_Z
 
+#### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of time domain body acceleration jerk signals in Z direction 
+
 ### STANDARD_DEVIATION_TIME_BODY_ACCELEROMETER_JERK_X
+
+#### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of time domain body acceleration jerk signals in X direction 
 
 ### STANDARD_DEVIATION_TIME_BODY_ACCELEROMETER_JERK_Y
 
+#### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of time domain body acceleration jerk signals in Y direction 
+
 ### STANDARD_DEVIATION_TIME_BODY_ACCELEROMETER_JERK_Z
+
+#### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of time domain body acceleration jerk signals in Z direction 
 
 ### MEAN_TIME_BODY_GYROSCOPE_X
 
+#### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of time domain body gyroscope signals in X direction 
+
 ### MEAN_TIME_BODY_GYROSCOPE_Y
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of time domain body gyroscope signals in Y direction 
 
 ### MEAN_TIME_BODY_GYROSCOPE_Z
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of time domain body gyroscope signals in Z direction 
+
 ### STANDARD_DEVIATION_TIME_BODY_GYROSCOPE_X
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of time domain body gyroscope signals in X direction 
 
 ### STANDARD_DEVIATION_TIME_BODY_GYROSCOPE_Y
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of time domain body gyroscope signals in Y direction 
+
 ### STANDARD_DEVIATION_TIME_BODY_GYROSCOPE_Z
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of time domain body gyroscope signals in Z direction 
 
 ### MEAN_TIME_BODY_GYROSCOPE_JERK_X
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of time domain body gyroscope jerk signals in X direction 
+
 ### MEAN_TIME_BODY_GYROSCOPE_JERK_Y
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of time domain body gyroscope jerk signals in Y direction 
 
 ### MEAN_TIME_BODY_GYROSCOPE_JERK_Z
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of time domain body gyroscope jerk signals in Z direction 
+
 ### STANDARD_DEVIATION_TIME_BODY_GYROSCOPE_JERK_X
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of time domain body gyroscope jerk signals in X direction 
 
 ### STANDARD_DEVIATION_TIME_BODY_GYROSCOPE_JERK_Y
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of time domain body gyroscope jerk signals in Y direction 
+
 ### STANDARD_DEVIATION_TIME_BODY_GYROSCOPE_JERK_Z
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of time domain body gyroscope jerk signals in Z direction 
+
 
 ### MEAN_TIME_BODY_ACCELEROMETER_MAGNITUDE
 
