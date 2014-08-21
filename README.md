@@ -4,7 +4,7 @@ This repository is for coursera's <a href="https://class.coursera.org/getdata-00
 <ol>
 <li><a href="https://github.com/hidekoji/coursera_getting_and_cleaning_data/blob/master/README.md">README</a></li>
 <li><a href="https://github.com/hidekoji/coursera_getting_and_cleaning_data/blob/master/run_analysis.R">run_analysis.R</a></li>
-<li>Code Book</li>
+<li><a href_"https://github.com/hidekoji/coursera_getting_and_cleaning_data/blob/master/DataDictionary.md">Code Book (a.k.a Data Dictionary)</a></li>
 </ol>
 
 ## About run_analysis.R
