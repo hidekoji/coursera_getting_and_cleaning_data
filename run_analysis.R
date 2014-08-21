@@ -77,12 +77,12 @@ getNiceDescription <- function(colname){
   } else if (col.aggfunc == "meanFreq()") {
     nice.aggname <- "MEAN_FREQUENCY"
   }
-
-  #get nice name for type
+  
+  #get a nice name for domain signal type
   if(col.type == "t"){
     nice.type = "TIME"
   } else if (col.type == "f"){
-    nice.type = "FREQUENCY_DOMAIN_SIGNALS"
+    nice.type = "FREQUENCY"
   }
   nice.colname <- ''
   # get nice name for rest
