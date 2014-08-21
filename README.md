@@ -191,9 +191,9 @@ If you look into the features_info.txt, you can see first small "t" stands for t
 Then it also says "Acc" stands for accelerometer and "Gyro" for gyroscope. Same apply to aggregate function name and "std" stands for standard deviation. Given these, let create a function that accpets original variable name and returns descriptive variable name. So the naming convention looks like
 
 ````
-<AGGREGATION_FUNCTION>_<DATA_TYPE>_<SINGAL_FROM>_<SENSOR>_<AXIS>
+<AGGREGATION_FUNCTION>_<DOMAIN_SIGNAL_TYPE>_<SINGAL_FROM>_<SENSOR>_<AXIS>
 
-DATA_TYPE: either TIME or FREQUENCY_DOMAIN_SIGNAL
+DOMAIN_SIGNAL_TYPE: either TIME or FREQUENCY
 SIGNAL_FROM :either BODY or GRAVITY
 SENSOR: either ACCELEROMETER or GYROSCOPE
 AXIS: X or Y or Z
@@ -227,11 +227,11 @@ getNiceDescription <- function(colname){
     nice.aggname <- "MEAN_FREQUENCY"
   }
   
-  #get nice name for type
+  #get nice name for domain signal type
   if(col.type == "t"){
     nice.type = "TIME"
   } else if (col.type == "f"){
-    nice.type = "FREQUENCY_DOMAIN_SIGNALS"
+    nice.type = "FREQUENCY"
   }
   nice.colname <- ''
   # get nice name for rest
