@@ -28,7 +28,7 @@ Integer
 
 #### Description
 
-An identifier of the subject who carried out the experiment.
+An identifier (range from 1 to 30) of the subject who carried out the experiment. 
 
 ### MEAN_TIME_BODY_ACCELEROMETER_X
 
@@ -331,26 +331,105 @@ Numeric
 
 Standard deviation of time domain body gyroscope jerk signals in Z direction 
 
-
 ### MEAN_TIME_BODY_ACCELEROMETER_MAGNITUDE
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of magnitude of these three-dimensional time domain body acceleration signals 
 
 ### STANDARD_DEVIATION_TIME_BODY_ACCELEROMETER_MAGNITUDE
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of magnitude of these three-dimensional time domain body acceleration signals 
+
 ### MEAN_TIME_GRAVITY_ACCELEROMETER_MAGNITUDE
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of magnitude of these three-dimensional time domain gravity acceleration signals 
 
 ### STANDARD_DEVIATION_TIME_GRAVITY_ACCELEROMETER_MAGNITUDE
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of magnitude of these three-dimensional time domain gravity acceleration signals 
+
 ### MEAN_TIME_BODY_ACCELEROMETER_JERK_MAGINITUDE
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of magnitude of these three-dimensional time domain body acceleration jerk signals 
 
 ### STANDARD_DEVIATION_TIME_BODY_ACCELEROMETER_JERK_MAGINITUDE
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of magnitude of these three-dimensional time domain body acceleration jerk signals 
+
 ### MEAN_TIME_BODY_GYROSCOPE_MAGNITUDE
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of magnitude of these three-dimensional time domain body gyroscope signals 
 
 ### STANDARD_DEVIATION_TIME_BODY_GYROSCOPE_MAGNITUDE
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of magnitude of these three-dimensional time domain body gyroscope signals 
+
 ### MEAN_TIME_BODY_GYROSCOPE_JERK_MAGNITUDE
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of magnitude of these three-dimensional time domain body gyroscope jerk signals 
+
 ### STANDARD_DEVIATION_TIME_BODY_GYROSCOPE_JERK_MAGNITUDE
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of magnitude of these three-dimensional time domain body gyroscope jerk signals 
 
 ### MEAN_FREQUENCY_BODY_ACCELEROMETER_X
 
