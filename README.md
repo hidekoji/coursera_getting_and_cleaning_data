@@ -191,9 +191,9 @@ If you look into the features_info.txt, you can see first small "t" stands for t
 Then it also says "Acc" stands for accelerometer and "Gyro" for gyroscope. Same apply to aggregate function name and "std" stands for standard deviation. Given these, let create a function that accpets original variable name and returns descriptive variable name. So the naming convention looks like
 
 ````
-<AGGREGATION_FUNCTION>_<DATA_TYPE>_<SINGAL_FROM>_<SENSOR>_<AXIS>
+<AGGREGATION_FUNCTION>_<DOMAIN_SIGNAL_TYPE>_<SINGAL_FROM>_<SENSOR>_<AXIS>
 
-DATA_TYPE: either TIME or FREQUENCY_DOMAIN_SIGNAL
+DOMAIN_SIGNAL_TYPE: either TIME or FREQUENCY
 SIGNAL_FROM :either BODY or GRAVITY
 SENSOR: either ACCELEROMETER or GYROSCOPE
 AXIS: X or Y or Z
@@ -222,16 +222,16 @@ getNiceDescription <- function(colname){
   if(col.aggfunc == "mean()"){
     nice.aggname <- "MEAN"
   } else if (col.aggfunc == "std()") {
-    nice.aggname <- "STANDARD_DIVIATION"
+    nice.aggname <- "STANDARD_DEVIATION"
   } else if (col.aggfunc == "meanFreq()") {
     nice.aggname <- "MEAN_FREQUENCY"
   }
   
-  #get nice name for type
+  #get nice name for domain signal type
   if(col.type == "t"){
     nice.type = "TIME"
   } else if (col.type == "f"){
-    nice.type = "FREQUENCY_DOMAIN_SIGNALS"
+    nice.type = "FREQUENCY"
   }
   nice.colname <- ''
   # get nice name for rest
@@ -296,7 +296,7 @@ merged.dataframe4 <- cbind(activities, subject_merged, mean.std.X_merged.labeled
 ````
 
 ### Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
-The final step is another data transformation. This time you need to group merged data frame by activity and subject then aggregate data by calculating average for each data column. To do this, let's use `ddply` function. This function accepts group by columns and function that aggregate data. since you need to group by activity and subject, let's pass 'ACTIVITY' and 'SUBJECT' as group by columns. As for data column, with `colnames` function, you need to select whole columns available in mean.std.X_merged data frame.  Once you get the aggregated data frame, write the data frame to file system with `write.table` function.
+The final step is another data transformation. This time you need to group merged data frame by activity and subject then aggregate data by calculating average for each data column. To do this, let's use `ddply` function. This function accepts group by columns and function that aggregate data. since you need to group by activity and subject, let's pass 'ACTIVITY' and 'SUBJECT' as group by columns. As for data column, with `colnames` function, you need to select whole columns available in mean.std.X_merged data frame. To calculate average of data column, you can use `colMeans()` function. Once you get the aggregated data frame, write the data frame to file system with `write.table` function.
 
 ```R
 groupColumns <- c("ACTIVITY","SUBJECT")
