@@ -28,11 +28,9 @@ unlink(temp)
 X_merged <- rbind(X_test, X_train)
 ## 1.2 merge y_test and y_train (keep all the records from both y_test and y_train)
 y_merged <- rbind(y_test, y_train)
-## 1.3 Set column names to y_merged
-#colnames(y_merged) <- 'AcitivityType'
-## 1.4 merge subject_test and subject_train (keep all the records from both subject_test and subject_train)
+## 1.3 merge subject_test and subject_train (keep all the records from both subject_test and subject_train)
 subject_merged <- rbind(subject_test, subject_train)
-## 1.5 merge X_merged, y_merged, and subject_,erged
+## 1.4 merge X_merged, y_merged, and subject_,erged
 merged.dataframe <- cbind(X_merged, y_merged,subject_merged)
 
 #2.Extracts only the measurements on the mean and standard deviation for each measurement.
@@ -73,11 +71,11 @@ getNiceDescription <- function(colname){
   if(col.aggfunc == "mean()"){
     nice.aggname <- "MEAN"
   } else if (col.aggfunc == "std()") {
-    nice.aggname <- "STANDARD_DIVIATION"
+    nice.aggname <- "STANDARD_DEVIATION"
   } else if (col.aggfunc == "meanFreq()") {
     nice.aggname <- "MEAN_FREQUENCY"
   }
-  
+
   #get a nice name for domain signal type
   if(col.type == "t"){
     nice.type = "TIME"
@@ -119,7 +117,7 @@ getNiceDescription <- function(colname){
    return (paste(nice.aggname, nice.type, nice.colname, sep = "_"))
   }
 }
-## 4.2 Add nice name descfription to features
+## 4.2 Add nice name description to features
 rowcols <- filtered.features$V2
 ### 4.2.1 Call custom function to get a nice description
 nicecols <- lapply(rowcols, function(x){getNiceDescription(x)})
