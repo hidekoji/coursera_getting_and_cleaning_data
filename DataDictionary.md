@@ -523,60 +523,300 @@ Weighted average of the frequency domain body acceleration signals in Z directio
 
 ### MEAN_FREQUENCY_BODY_ACCELEROMETER_JERK_X
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of the frequency domain body acceleration jerk signals in X direction.
+
 ### MEAN_FREQUENCY_BODY_ACCELEROMETER_JERK_Y
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of the frequency domain body acceleration jerk signals in Y direction.
 
 ### MEAN_FREQUENCY_BODY_ACCELEROMETER_JERK_Z
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of the frequency domain body acceleration jerk signals in Z direction.
+
 ### STANDARD_DEVIATION_FREQUENCY_BODY_ACCELEROMETER_JERK_X
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of the frequency domain body acceleration jerk signals in X direction.
 
 ### STANDARD_DEVIATION_FREQUENCY_BODY_ACCELEROMETER_JERK_Y
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of the frequency domain body acceleration jerk signals in X direction.
+
 ### STANDARD_DEVIATION_FREQUENCY_BODY_ACCELEROMETER_JERK_Z
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of the frequency domain body acceleration jerk signals in Z direction.
 
 ### MEAN_FREQUENCY_FREQUENCY_BODY_ACCELEROMETER_JERK_X
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Weighted average of the frequency domain body acceleration jerk signals in X direction.
+
 ### MEAN_FREQUENCY_FREQUENCY_BODY_ACCELEROMETER_JERK_Y
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Weighted average of the frequency domain body acceleration jerk signals in Y direction.
 
 ### MEAN_FREQUENCY_FREQUENCY_BODY_ACCELEROMETER_JERK_Z
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Weighted average of the frequency domain body acceleration jerk signals in X direction.
+
 ### MEAN_FREQUENCY_BODY_GYROSCOPE_X
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of the frequency domain body gyroscope signals in X direction.
 
 ### MEAN_FREQUENCY_BODY_GYROSCOPE_Y
 
-### MEAN_FREQUENCY_BODY_GYROSCOPE_Z"
+### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of the frequency domain body gyroscope signals in Y direction.
+
+### MEAN_FREQUENCY_BODY_GYROSCOPE_Z
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of the frequency domain body gyroscope signals in Z direction.
 
 ### STANDARD_DEVIATION_FREQUENCY_BODY_GYROSCOPE_X
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of the frequency domain body gyroscope signals in X direction.
+
 ### STANDARD_DEVIATION_FREQUENCY_BODY_GYROSCOPE_Y
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of the frequency domain body gyroscope signals in Y direction.
 
 ### STANDARD_DEVIATION_FREQUENCY_BODY_GYROSCOPE_Z
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of the frequency domain body gyroscope signals in Z direction.
+
 ### MEAN_FREQUENCY_FREQUENCY_BODY_GYROSCOPE_X
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Weighted average of the frequency domain body gyroscope signals in X direction.
 
 ### MEAN_FREQUENCY_FREQUENCY_BODY_GYROSCOPE_Y
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Weighted average of the frequency domain body gyroscope signals in Y direction.
+
 ### MEAN_FREQUENCY_FREQUENCY_BODY_GYROSCOPE_Z
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Weighted average of the frequency domain body gyroscope signals in Z direction.
 
 ### MEAN_FREQUENCY_BODY_ACCELEROMETER_MAGNITUDE
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of magnitude of these three-dimensional frequency domain body accelerometer signals 
+
 ### STANDARD_DEVIATION_FREQUENCY_BODY_ACCELEROMETER_MAGNITUDE
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of magnitude of these three-dimensional frequency domain body accelerometer signals 
 
 ### MEAN_FREQUENCY_FREQUENCY_BODY_ACCELEROMETER_MAGNITUDE
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Weighted average of magnitude of these three-dimensional frequency domain body accelerometer signals 
+
 ### MEAN_FREQUENCY_BODY_BODY_ACCELEROMETER_JERK_MAGNITUDE
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of magnitude of these three-dimensional frequency domain body accelerometer jerk signals 
 
 ### STANDARD_DEVIATION_FREQUENCY_BODY_BODY_ACCELEROMETER_JERK_MAGNITUDE
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of magnitude of these three-dimensional frequency domain body accelerometer jerk signals 
+
 ### MEAN_FREQUENCY_FREQUENCY_BODY_BODY_ACCELEROMETER_JERK_MAGNITUDE
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Weighted average of magnitude of these three-dimensional frequency domain body accelerometer jerk signals 
 
 ### MEAN_FREQUENCY_BODY_BODY_GYROSCOPE_MAGNITUDE
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of magnitude of these three-dimensional frequency domain body gyroscope signals 
+
 ### STANDARD_DEVIATION_FREQUENCY_BODY_BODY_GYROSCOPE_MAGNITUDE
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of magnitude of these three-dimensional frequency domain body gyroscope signals 
 
 ### MEAN_FREQUENCY_FREQUENCY_BODY_BODY_GYROSCOPE_MAGNITUDE
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Weighted average of magnitude of these three-dimensional frequency domain body gyroscope signals 
+
 ### MEAN_FREQUENCY_BODY_BODY_GYROSCOPE_JERK_MAGNITUDE
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Mean value of magnitude of these three-dimensional frequency domain body gyroscope jerk signals 
 
 ### STANDARD_DEVIATION_FREQUENCY_BODY_BODY_GYROSCOPE_JERK_MAGNITUDE
 
+### Data Type
+
+Numeric
+
+#### Description
+
+Standard deviation of magnitude of these three-dimensional frequency domain body gyroscope jerk signals 
+
 ### MEAN_FREQUENCY_FREQUENCY_BODY_BODY_GYROSCOPE_JERK_MAGNITUDE
+
+### Data Type
+
+Numeric
+
+#### Description
+
+Weighted average of magnitude of these three-dimensional frequency domain body gyroscope jerk signals 
