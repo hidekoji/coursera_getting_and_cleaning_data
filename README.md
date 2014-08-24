@@ -172,7 +172,7 @@ merged.dataframe3 <- cbind(mean.std.X_merged, select(activities.lookup, V2), sub
 ````
 
 ### Appropriately labels the data set with descriptive variable names
-So how we can get a descriptive variable names. As a starter, let's take a look at the filtered.features data frame. So you can see V2 columns contains some sort of variable names. But it uses too much abbreviation and difficult to understand.
+So how we can get descriptive variable names? As a starter, let's take a look at the filtered.features data frame. So you can see V2 columns contains some sort of variable names. But it uses too much abbreviation and difficult to understand.
 
 ````R
 > head(filtered.features)
