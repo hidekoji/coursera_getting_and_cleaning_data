@@ -127,7 +127,7 @@ The next step is data transformation and you need to filter data by only selecti
 6  6  tBodyAcc-std()-Z
 ````
 
-As a first step, you can filter this features data frame by using `grelpl` and `filter` function. As for `filter`, let's use [Hadley Wickham's dplyr](https://github.com/hadley/dplyr)  for the project. Once you get a filterd features data frame that only contains mean and stadard deviation data (i.e. column indexs), you can use dplyr's `select` function and select columns from X_merge data frame by passing column indexes obtained from filtered.features data frame's V1 column. Now you get a  filtered X data (mean.std.X_merged in my R code) as requested. So with `cbind` function let's create a merged data frame by combining mean.std.X_merged, y_merged, and subject_merged horizontally (i.e. by columns)
+As a first step, you can filter this features data frame by using `grelpl` and `filter` function. `filter` is part of  [Hadley Wickham's dplyr](https://github.com/hadley/dplyr). Once you get a filterd features data frame that only contains mean and stadard deviation data (i.e. column indexs), you can use dplyr's `select` function and select columns from X_merge data frame by passing column indexes obtained from filtered.features data frame's V1 column. Now you get a  filtered X data (mean.std.X_merged in my R code) as requested. So with `cbind` function let's create a merged data frame by combining mean.std.X_merged, y_merged, and subject_merged horizontally (i.e. by columns)
 
 So the R code that Extracts only the measurements on the mean and standard deviation for each measurement looks like this:
 
