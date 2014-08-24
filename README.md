@@ -157,7 +157,7 @@ You can grab descriptive activity names from activity labels. Here is the labels
 6  6             LAYING
 ````
 
-Since activities data frame only contains the look up code, you need to join the y_merged data frame with activity_labels data frame with `left_join` function. Now you have activity.lookup data frame. To get a merged data farme, use `cbind` like previous step and merge mean.std.X_merged, activities.lookup (only V2 column so need to do `select`), and subject_merged data frame.
+Since activities data frame only contains the look up code, you need to join the y_merged data frame with activity_labels data frame with `left_join` function. Now you have activity.lookup data frame. To get a merged data farme, use `cbind` like previous step and merge mean.std.X_merged, activities.lookup (you only need V2 column so need to do `select`), and subject_merged data frame.
 
 So the R code that Extracts only the measurements on the mean and standard deviation for each measurement looks like this:
 
