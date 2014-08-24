@@ -114,7 +114,7 @@ merged.dataframe <- cbind(X_merged, y_merged,subject_merged)
 ````
 
 ### Extracts only the measurements on the mean and standard deviation for each measurement
-The next step is data transformation and you need to filter data by only selecting mean or deviation columns for each measurement. If look into the features data frame's V2 column, you can see what aggregation function is used for each measurement like this.
+The next step is data transformation and you need to filter data by only selecting mean or deviation columns for each measurement. If you look into the features data frame's V2 column, you can see what aggregation function is used for each measurement like this.
 
 ````R
 > head(features)
