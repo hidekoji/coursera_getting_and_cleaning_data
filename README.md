@@ -23,7 +23,7 @@ This R script consists of following parts:
 
 ### Download data from <a href="https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip">the link</a> and exploade it to a temp directory
 
-In R, there is a function called `download.file` that allows you to download the file from an URL you provide as the argument. In this course project, I used temporary file, which is created by `tempfile()` function, for storing the zip file. Once you downloaded the zip file, you can use `unzip` function to explode the zip file.
+In R, there is a function called `download.file` that allows you to download data file from an URL you provide as the argument. In this course project, I used temporary file, which is created by `tempfile()` function, for storing the zip file. Once you downloaded the zip file, you can use `unzip` function to explode the zip file.
 
 So the R code for downloading data looks like this:
 
