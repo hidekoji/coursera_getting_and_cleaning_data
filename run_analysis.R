@@ -37,7 +37,7 @@ merged.dataframe <- cbind(X_merged, y_merged,subject_merged)
 library(plyr)
 library(dplyr)
 ## 2.1 Get column names indexes that have mean() or std()
-filtered.features <- features %>% filter(grepl("mean()",V2) | grepl("std()",V2))
+filtered.features <- features %>% filter(grepl("mean\\(",V2) | grepl("std\\(",V2))
 ## 2.2 From X_merged, only select columns that in filtered.features
 mean.std.X_merged <- select(X_merged, filtered.features$V1)
 ## 2.3 Add back y_merged and subject_merged which are omitted by step 2.2
@@ -72,9 +72,7 @@ getNiceDescription <- function(colname){
     nice.aggname <- "MEAN"
   } else if (col.aggfunc == "std()") {
     nice.aggname <- "STANDARD_DEVIATION"
-  } else if (col.aggfunc == "meanFreq()") {
-    nice.aggname <- "MEAN_FREQUENCY"
-  }
+  } 
 
   #get a nice name for domain signal type
   if(col.type == "t"){
@@ -142,3 +140,4 @@ merged.dataframe5 = ddply(merged.dataframe4, groupColumns,
                           function(x) colMeans(x[dataColumns]))
 ## 5.2 write the data frame to text file
 write.table(merged.dataframe5, file = '/tmp/dataframe5.txt', row.names = FALSE)
+
